@@ -1,10 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import CardPizza from "../components/CardPizza";
 import Header from "../components/Header";
+import { CardContext } from "../context/CardContext";
 
 const HomePage = () => {
   const [pizzas, setPizzas] = useState([]);
   const [error, setError] = useState(null);
+  const { cards, setCards } = useContext(CardContext);
+  const [cart, setCart] = useState({
+    img: "",
+    name: "",
+    price: 0,
+    qty: 0,
+  });
 
   const getPizzas = async () => {
     try {
