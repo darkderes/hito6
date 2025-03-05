@@ -6,13 +6,6 @@ import { CardContext } from "../context/CardContext";
 const HomePage = () => {
   const [pizzas, setPizzas] = useState([]);
   const [error, setError] = useState(null);
-  const { cards, setCards } = useContext(CardContext);
-  const [cart, setCart] = useState({
-    img: "",
-    name: "",
-    price: 0,
-    qty: 0,
-  });
 
   const getPizzas = async () => {
     try {

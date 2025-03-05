@@ -3,24 +3,25 @@ import Button from "react-bootstrap/Button";
 import { FaEye, FaShoppingCart } from "react-icons/fa";
 
 const CardPizza = (prop) => {
+  const { name, img, price, ingredients } = prop;
   return (
     <Card className="card-pizza">
-      <Card.Img variant="top" src={prop.img} />
+      <Card.Img variant="top" src={img} />
       <Card.Body>
-        <Card.Title className="text-center">Pizza {prop.name}</Card.Title>
+        <Card.Title className="text-center">Pizza {name}</Card.Title>
         <hr />
       </Card.Body>
 
       <Card.Text>
         <p className="text-center fs-3">Ingredientes:</p>
         <ul>
-          {prop.ingredients.map((ingredient, index) => (
+          {ingredients.map((ingredient, index) => (
             <li key={index}>{ingredient}</li>
           ))}
         </ul>
         <hr />
         <p className="text-center fw-bold fs-5 mb-0">
-          Precio: ${prop.price.toLocaleString()}
+          Precio: ${price.toLocaleString()}
         </p>
       </Card.Text>
 
