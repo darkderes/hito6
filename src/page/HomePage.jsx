@@ -33,6 +33,7 @@ const HomePage = () => {
           {pizzas.map((pizza) => (
             <div key={pizza.id} className="col-md-4 mb-4">
               <CardPizza
+                id={pizza.id}
                 name={pizza.name}
                 img={pizza.img}
                 price={pizza.price}

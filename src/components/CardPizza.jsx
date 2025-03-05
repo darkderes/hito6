@@ -5,19 +5,28 @@ import { FaEye, FaShoppingCart } from "react-icons/fa";
 import { CartContext } from "../context/CardContext";
 
 const CardPizza = (prop) => {
-  const { name, img, price, ingredients } = prop;
-  const { carts, setCarts } = useContext(CartContext);
+  const { id, name, img, price, ingredients } = prop;
+  const { setCarts } = useContext(CartContext);
 
   const handleAddToCart = () => {
-    const newCart = {
-      img: img,
-      name: name,
-      price: price,
-      qty: 1,
-    };
+    setCarts((prevCarts) => {
+      const existingCartItem = prevCarts.find((cartItem) => cartItem.id === id);
 
-    setCarts((prevCarts) => [...prevCarts, newCart]);
-    console.log("Cart:", carts);
+      if (existingCartItem) {
+        return prevCarts.map((cartItem) =>
+          cartItem.id === id ? { ...cartItem, qty: cartItem.qty + 1 } : cartItem
+        );
+      } else {
+        const newCart = {
+          id: id,
+          img: img,
+          name: name,
+          price: price,
+          qty: 1,
+        };
+        return [...prevCarts, newCart];
+      }
+    });
   };
 
   return (

@@ -1,34 +1,35 @@
-import { useState } from "react";
-import { pizzaCart } from "../pizzas";
+import { useContext } from "react";
+import { CartContext } from "../context/CardContext";
 
 const CartPage = () => {
-  const [cart, setCart] = useState(pizzaCart);
+  // ocupar el context para obtener el carrito
+  const { carts, setCarts } = useContext(CartContext);
 
   const increaseQuantity = (id) => {
-    setCart(
-      cart.map((pizza) =>
-        pizza.id === id ? { ...pizza, count: pizza.count + 1 } : pizza
+    setCarts(
+      carts.map((pizza) =>
+        pizza.id === id ? { ...pizza, qty: pizza.qty + 1 } : pizza
       )
     );
   };
 
   const decreaseQuantity = (id) => {
-    setCart(
-      cart
+    setCarts(
+      carts
         .map((pizza) =>
-          pizza.id === id ? { ...pizza, count: pizza.count - 1 } : pizza
+          pizza.id === id ? { ...pizza, qty: pizza.qty - 1 } : pizza
         )
-        .filter((pizza) => pizza.id !== id || pizza.count > 0)
+        .filter((pizza) => pizza.id !== id || pizza.qty > 0)
     );
   };
 
-  const total = cart.reduce((acc, pizza) => acc + pizza.price * pizza.count, 0);
+  const total = carts.reduce((acc, pizza) => acc + pizza.price * pizza.qty, 0);
 
   return (
     <div className=" d-flex align-items-center d-flex flex-column">
       <h2 className="my-5">Detalles del pedido:</h2>
       <ul>
-        {cart.map((pizza) => (
+        {carts.map((pizza) => (
           <li key={pizza.id} className="mb-3 d-flex align-items-center">
             <img
               src={pizza.img}
@@ -48,7 +49,7 @@ const CartPage = () => {
               >
                 -
               </button>
-              <span className="mx-2">{pizza.count}</span>
+              <span className="mx-2">{pizza.qty}</span>
               <button
                 className="btn btn-outline-info"
                 onClick={() => increaseQuantity(pizza.id)}

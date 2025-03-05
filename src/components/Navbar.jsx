@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { Link } from "react-router";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -10,9 +11,11 @@ import {
   FaSignOutAlt,
   FaShoppingCart,
 } from "react-icons/fa";
+import { CartContext } from "../context/CardContext";
 
 const NavbarApp = () => {
-  const total = 25000;
+  const { carts } = useContext(CartContext);
+  const total = carts.reduce((acc, pizza) => acc + pizza.price * pizza.qty, 0);
   const token = false;
   return (
     <Navbar
