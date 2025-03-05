@@ -1,9 +1,25 @@
+import { useContext } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { FaEye, FaShoppingCart } from "react-icons/fa";
+import { CartContext } from "../context/CardContext";
 
 const CardPizza = (prop) => {
   const { name, img, price, ingredients } = prop;
+  const { carts, setCarts } = useContext(CartContext);
+
+  const handleAddToCart = () => {
+    const newCart = {
+      img: img,
+      name: name,
+      price: price,
+      qty: 1,
+    };
+
+    setCarts((prevCarts) => [...prevCarts, newCart]);
+    console.log("Cart:", carts);
+  };
+
   return (
     <Card className="card-pizza">
       <Card.Img variant="top" src={img} />
@@ -29,7 +45,11 @@ const CardPizza = (prop) => {
         <Button variant="outline-dark" className="flex-grow-1 me-2">
           Ver mas <FaEye />
         </Button>
-        <Button variant="dark" className="flex-grow-1">
+        <Button
+          variant="dark"
+          className="flex-grow-1"
+          onClick={handleAddToCart}
+        >
           Añadir <FaShoppingCart />
         </Button>
       </Card.Body>
