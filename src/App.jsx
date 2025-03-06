@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router";
+import { ToastContainer } from "react-toastify";
 import {
   NavbarApp,
   HomePage,
@@ -31,8 +32,10 @@ function App() {
             {/* <Pizza /> */}
           </Routes>
         </CardProvider>
+
         <Footer />
       </BrowserRouter>
+      <ToastContainer autoClose={1000} />
     </>
   );
 }
