@@ -28,11 +28,8 @@ function App() {
             <Route path="/Pizza/p001" element={<PizzaPage />} />
             <Route path="/Profile" element={<ProfilePage />} />
             <Route path="*" element={<NotFoundPage />} />
-
-            {/* <Pizza /> */}
           </Routes>
         </CardProvider>
-
         <Footer />
       </BrowserRouter>
       <ToastContainer autoClose={1000} />
