@@ -1,34 +1,37 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+import { useContext } from "react";
 import CardPizza from "../components/CardPizza";
 import Header from "../components/Header";
+import { PizzaContext } from "../context/PizzaContext";
 
 const HomePage = () => {
-  const [pizzas, setPizzas] = useState([]);
-  const [error, setError] = useState(null);
+  const { pizzas } = useContext(PizzaContext);
+  // const [pizzas, setPizzas] = useState([]);
+  // const [error, setError] = useState(null);
 
-  const getPizzas = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/api/pizzas");
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      setPizzas(data);
-    } catch (error) {
-      setError(error.message);
-      console.error("Error fetching pizzas:", error);
-    }
-  };
+  // const getPizzas = async () => {
+  //   try {
+  //     const response = await fetch("http://localhost:5000/api/pizzas");
+  //     if (!response.ok) {
+  //       throw new Error("Network response was not ok");
+  //     }
+  //     const data = await response.json();
+  //     setPizzas(data);
+  //   } catch (error) {
+  //     setError(error.message);
+  //     console.error("Error fetching pizzas:", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    getPizzas();
-  }, []);
+  // useEffect(() => {
+  //   getPizzas();
+  // }, []);
 
   return (
     <>
       <Header />
       <div className="my-4 container">
-        {error && <div className="alert alert-danger">{error}</div>}
+        {/* {error && <div className="alert alert-danger">{error}</div>} */}
         <div className="row">
           {pizzas.map((pizza) => (
             <div key={pizza.id} className="col-md-4 mb-4">

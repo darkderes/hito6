@@ -11,7 +11,7 @@ import {
   FaSignOutAlt,
   FaShoppingCart,
 } from "react-icons/fa";
-import { CartContext } from "../context/CardContext";
+import { CartContext } from "../context/CartContext";
 
 const NavbarApp = () => {
   const { carts } = useContext(CartContext);

@@ -2,11 +2,10 @@ import { useContext } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { FaEye, FaShoppingCart } from "react-icons/fa";
-import { CartContext } from "../context/CardContext";
+import { CartContext } from "../context/CartContext";
 import { toast } from "react-toastify";
 
-const CardPizza = (prop) => {
-  const { id, name, img, price, ingredients } = prop;
+const CardPizza = ({ id, name, img, price, ingredients }) => {
   const { setCarts } = useContext(CartContext);
   const notify = () => toast.success("Pizza añadida al carrito!");
 

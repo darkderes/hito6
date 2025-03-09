@@ -12,13 +12,14 @@ import {
   Footer,
 } from "./page/index";
 
-import CardProvider from "./context/CardContext";
+// import CardProvider from "./context/CardContext";
+import AppProviders from "./context/AppProviders";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <CardProvider>
+        <AppProviders>
           <NavbarApp />
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -29,7 +30,7 @@ function App() {
             <Route path="/Profile" element={<ProfilePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-        </CardProvider>
+        </AppProviders>
         <Footer />
       </BrowserRouter>
       <ToastContainer autoClose={1000} />

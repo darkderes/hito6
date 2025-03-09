@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CartContext } from "../context/CardContext";
+import { CartContext } from "../context/CartContext";
 
 const CartPage = () => {
   // ocupar el context para obtener el carrito
