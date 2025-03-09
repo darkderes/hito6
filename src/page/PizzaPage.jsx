@@ -1,31 +1,33 @@
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { PizzaContext } from "../context/PizzaContext";
 const PizzaPage = () => {
-  const [pizza, setPizza] = useState([]);
+  const { pizzas, fetchPizzas } = useContext(PizzaContext);
 
-  const getPizza = async () => {
-    const response = await fetch("http://localhost:5000/api/pizzas/p001");
-    const data = await response.json();
-    return setPizza(data);
-  };
+  // const getPizza = async () => {
+  //   const response = await fetch("http://localhost:5000/api/pizzas/p001");
+  //   const data = await response.json();
+  //   return setPizza(data);
+  // };
+
   useEffect(() => {
-    getPizza();
-  }, []);
+    fetchPizzas("http://localhost:5000/api/pizzas/p001");
+  }, [fetchPizzas]);
 
   return (
     <div className="container mt-5">
       <div className="card">
-        <h1 className="card-title text-center mb-5 ">Pizza {pizza.name}</h1>
+        <h1 className="card-title text-center mb-5 ">Pizza {pizzas.name}</h1>
         <img
           className="card-img-top pizza-image mx-auto d-block"
-          src={pizza.img}
-          alt={pizza.name}
+          src={pizzas.img}
+          alt={pizzas.name}
         />
         <div className="card-body">
-          <p className="card-text mx-3">{pizza.desc}</p>
+          <p className="card-text mx-3">{pizzas.desc}</p>
           <h2 className="text-center">Ingredientes:</h2>
-          {pizza.ingredients && (
+          {pizzas.ingredients && (
             <ul className="list-group list-group-flush">
-              {pizza.ingredients.map((ingredient, index) => (
+              {pizzas.ingredients.map((ingredient, index) => (
                 <li key={index} className="list-group-item text-center">
                   {ingredient}
                 </li>
@@ -34,7 +36,7 @@ const PizzaPage = () => {
           )}
           <div className="d-flex justify-content-end align-items-center mt-3">
             <p className="card-text text-danger fs-2 mx-3 mb-0">
-              $ {pizza.price ? pizza.price.toLocaleString() : ""}
+              $ {pizzas.price ? pizzas.price.toLocaleString() : ""}
             </p>
             <button className="btn btn-dark">Add to Cart</button>
           </div>
