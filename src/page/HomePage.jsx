@@ -17,18 +17,19 @@ const HomePage = () => {
       <div className="my-4 container">
         {/* {error && <div className="alert alert-danger">{error}</div>} */}
         <div className="row">
-          {pizzas.map((pizza) => (
-            <div key={pizza.id} className="col-md-4 mb-4">
-              <CardPizza
-                id={pizza.id}
-                name={pizza.name}
-                img={pizza.img}
-                price={pizza.price}
-                description={pizza.desc}
-                ingredients={pizza.ingredients}
-              />
-            </div>
-          ))}
+          {Array.isArray(pizzas) &&
+            pizzas.map((pizza) => (
+              <div key={pizza.id} className="col-md-4 mb-4">
+                <CardPizza
+                  id={pizza.id}
+                  name={pizza.name}
+                  img={pizza.img}
+                  price={pizza.price}
+                  description={pizza.desc}
+                  ingredients={pizza.ingredients}
+                />
+              </div>
+            ))}
         </div>
       </div>
     </>
