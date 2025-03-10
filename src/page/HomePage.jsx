@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import { PizzaContext } from "../context/PizzaContext";
 
 const HomePage = () => {
-  const { pizzas, fetchPizzas } = useContext(PizzaContext);
+  const { pizzas, fetchPizzas, error } = useContext(PizzaContext);
 
   useEffect(() => {
     fetchPizzas("http://localhost:5000/api/pizzas");
@@ -15,7 +15,7 @@ const HomePage = () => {
     <>
       <Header />
       <div className="my-4 container">
-        {/* {error && <div className="alert alert-danger">{error}</div>} */}
+        {error && <div className="alert alert-danger">{error}</div>}
         <div className="row">
           {Array.isArray(pizzas) &&
             pizzas.map((pizza) => (

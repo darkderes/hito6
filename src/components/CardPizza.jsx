@@ -39,19 +39,20 @@ const CardPizza = ({ id, name, img, price, ingredients }) => {
           <Card.Title className="text-center">Pizza {name}</Card.Title>
           <hr />
         </Card.Body>
-
-        <Card.Text>
-          <p className="text-center fs-3">Ingredientes:</p>
-          <ul>
-            {ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
-            ))}
-          </ul>
-          <hr />
-          <p className="text-center fw-bold fs-5 mb-0">
-            Precio: ${price.toLocaleString()}
-          </p>
-        </Card.Text>
+        <Card.Body>
+          <Card.Text>
+            <p className="text-center fs-3">Ingredientes:</p>
+            <ul>
+              {ingredients.map((ingredient, index) => (
+                <li key={index}>{ingredient}</li>
+              ))}
+            </ul>
+            <hr />
+            <p className="text-center fw-bold fs-5 mb-0">
+              Precio: ${price.toLocaleString()}
+            </p>
+          </Card.Text>
+        </Card.Body>
 
         <Card.Body className="d-flex justify-content-between">
           <Button variant="outline-dark" className="flex-grow-1 me-2">

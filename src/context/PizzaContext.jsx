@@ -4,6 +4,7 @@ export const PizzaContext = createContext();
 
 export const PizzaProvider = ({ children }) => {
   const [pizzas, setPizzas] = useState([]);
+  const [error, setError] = useState(null);
 
   // Fetch pizzas from the API
   const fetchPizzas = async (url) => {
@@ -13,6 +14,7 @@ export const PizzaProvider = ({ children }) => {
       setPizzas(data);
     } catch (error) {
       console.error("Error fetching pizzas:", error);
+      setError("Error fetching pizzas");
     }
   };
 
@@ -21,7 +23,7 @@ export const PizzaProvider = ({ children }) => {
   }, []);
 
   return (
-    <PizzaContext.Provider value={{ pizzas, fetchPizzas }}>
+    <PizzaContext.Provider value={{ pizzas, fetchPizzas, error }}>
       {children}
     </PizzaContext.Provider>
   );

@@ -3,12 +3,6 @@ import { PizzaContext } from "../context/PizzaContext";
 const PizzaPage = () => {
   const { pizzas, fetchPizzas } = useContext(PizzaContext);
 
-  // const getPizza = async () => {
-  //   const response = await fetch("http://localhost:5000/api/pizzas/p001");
-  //   const data = await response.json();
-  //   return setPizza(data);
-  // };
-
   useEffect(() => {
     fetchPizzas("http://localhost:5000/api/pizzas/p001");
   }, [fetchPizzas]);
