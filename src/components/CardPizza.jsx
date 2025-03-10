@@ -40,17 +40,16 @@ const CardPizza = ({ id, name, img, price, ingredients }) => {
           <hr />
         </Card.Body>
         <Card.Body>
-          <Card.Text>
-            <p className="text-center fs-3">Ingredientes:</p>
-            <ul>
-              {ingredients.map((ingredient, index) => (
-                <li key={index}>{ingredient}</li>
-              ))}
-            </ul>
-            <hr />
-            <p className="text-center fw-bold fs-5 mb-0">
-              Precio: ${price.toLocaleString()}
-            </p>
+          <Card.Text className="text-center fs-3">Ingredientes:</Card.Text>
+          {/* <p className="text-center fs-3">Ingredientes:</p> */}
+          <ul>
+            {ingredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
+            ))}
+          </ul>
+          <hr />
+          <Card.Text className="text-center fw-bold fs-5 mb-0">
+            Precio: ${price.toLocaleString()}
           </Card.Text>
         </Card.Body>
 
